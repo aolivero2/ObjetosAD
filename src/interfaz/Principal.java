@@ -5,6 +5,7 @@
  */
 
 package interfaz;
+import clases.Persona;
 
 /**
  *
@@ -15,6 +16,8 @@ public class Principal extends javax.swing.JFrame {
     /**
      * Creates new form Principal
      */
+    Persona v[] = new Persona[5];
+    int cont = 0;
     public Principal() {
         initComponents();
     }
@@ -64,9 +67,9 @@ public class Principal extends javax.swing.JFrame {
 
         jLabel4.setText("Primer Apellido:");
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
-        jPanel2.add(txtIdentificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 100, 30));
-        jPanel2.add(txtPrimerNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, 100, 30));
-        jPanel2.add(txtPrimerApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 110, 100, 30));
+        jPanel2.add(txtIdentificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, 100, 30));
+        jPanel2.add(txtPrimerNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 60, 100, 30));
+        jPanel2.add(txtPrimerApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 120, 100, 30));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 230, 170));
 
@@ -74,15 +77,20 @@ public class Principal extends javax.swing.JFrame {
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         cmdGuardar.setText("Guardar");
-        jPanel3.add(cmdGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, 80, 30));
+        cmdGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdGuardarActionPerformed(evt);
+            }
+        });
+        jPanel3.add(cmdGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, 80, 30));
 
         cmdMostrar.setText("Mostrar");
-        jPanel3.add(cmdMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, 80, 30));
+        jPanel3.add(cmdMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, 80, 30));
 
         cmdLimpiar.setText("Limpiar");
-        jPanel3.add(cmdLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 100, 80, 30));
+        jPanel3.add(cmdLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 80, 30));
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 60, 200, 150));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 60, 180, 150));
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Resultado:"));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -110,6 +118,21 @@ public class Principal extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(547, 457));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cmdGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdGuardarActionPerformed
+       Persona p;
+       long identificacion;
+       String primer_nombre, primer_apellido;
+      
+       identificacion= Long.parseLong(txtPrimerNombre.getText());
+       primer_nombre = txtPrimerNombre.getText();
+       primer_apellido= txtPrimerApellido.getText();
+       
+       p = new Persona (identificacion,primer_nombre,primer_apellido);
+       
+       v[cont]=p;
+       cont++;
+    }//GEN-LAST:event_cmdGuardarActionPerformed
 
     /**
      * @param args the command line arguments
